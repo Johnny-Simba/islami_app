@@ -16,6 +16,7 @@ class _SebhaTabState extends State<SebhaTab> {
     'الحمد لله',
     'الله أكبر',
   ];
+  double _rotationAngle = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,41 +35,47 @@ class _SebhaTabState extends State<SebhaTab> {
         SizedBox(
           height: 30,
         ),
-        InkWell(
-          onTap: () {
-            counter++;
-            totalCounter++;
-            sebhaFlow();
-          },
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Image.asset('assets/images/sebha_design.png'),
-              Column(
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            InkWell(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              splashFactory: NoSplash.splashFactory,
+              onTap: () {
+                counter++;
+                totalCounter++;
+                sebhaFlow();
+              },
+              child: AnimatedRotation(
+                  turns: _rotationAngle / 360,
+                  duration: const Duration(milliseconds: 500),
+                  child: Image.asset('assets/images/sebha1_design.png')),
+            ),
+            Column(
                 children: [
                   SizedBox(
-                    height: 80,
-                  ),
+                  height: 10,
+                ),
                   Text(zekr,
                       style: TextStyle(
-                          color: AppColors.whiteColor,
-                          fontSize: 30,
+                        color: AppColors.primaryDark,
+                        fontSize: 30,
                           fontWeight: FontWeight.bold)),
                   SizedBox(
                     height: 20,
                   ),
                   Text('$counter',
                       style: TextStyle(
-                          color: AppColors.whiteColor,
-                          fontSize: 30,
+                        color: AppColors.primaryDark,
+                        fontSize: 30,
                           fontWeight: FontWeight.bold))
                 ],
               )
             ],
           ),
-        ),
         SizedBox(
-          height: 20,
+          height: 50,
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -77,7 +84,7 @@ class _SebhaTabState extends State<SebhaTab> {
             children: [
               Text('${totalCounter} : إجمالي عدد التسبيحات',
                   style: TextStyle(
-                      color: AppColors.whiteColor,
+                      color: AppColors.primaryDark,
                       fontSize: 30,
                       fontWeight: FontWeight.bold)),
             ],
@@ -101,6 +108,7 @@ class _SebhaTabState extends State<SebhaTab> {
       counter = 0;
       totalCounter = 0;
     }
+    _rotationAngle += 10;
     setState(() {});
   }
 }
