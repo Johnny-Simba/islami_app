@@ -14,6 +14,7 @@ class QuranTab extends StatelessWidget {
         children: [
           Center(child: Image.asset('assets/images/islami_logo.png')),
           TextField(
+            style: TextStyle(color: AppColors.whiteColor),
             cursorColor: AppColors.whiteColor,
             decoration: InputDecoration(
               prefixIcon: ImageIcon(
@@ -59,28 +60,32 @@ class QuranTab extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Sura En.',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                  height: 130,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Sura En.',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'Sura Ar.',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                      Text(
+                        'Sura Ar.',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'Aya Number.',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                      Text(
+                        'Aya Number.',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Image.asset('assets/images/most_recently_logo.png')
               ],
